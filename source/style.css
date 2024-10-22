@@ -1,33 +1,5 @@
 @import url("default.css");
 
-header {
-    width: 100%;
-    margin: auto;
-    background-color: var(--color-gray);
-    height: 70px;
-    display: flex;
-    align-items: center;
-    position: fixed;
-}
-
-nav {
-    width: 100%;
-    margin: auto;
-}
-
-nav ul {
-    display: flex;
-    flex-direction: row;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    justify-content: space-evenly;
-}
-
-nav ul>li a{
-    color: var(--color-lightwhite);
-}
-
 main{
     padding-top: 100px;
     width: 90%;
@@ -44,7 +16,7 @@ main{
     cursor: pointer;
 }
 
-#atividadeAtual, #atividadeProx {
+#atividadeAtual, #atividadeProx, #meta {
     font-weight: 500;
     text-decoration: underline;
     color: var(--color-block);

@@ -22,15 +22,22 @@
                 <li>
                     <a href="#agua"><i class="bi bi-cup-straw"></i> Consumo de Água</a>
                 </li>
+                <li>
+                    <a href="configs.html"><i class="bi bi-gear"></i></a>
+                </li>
             </ul>
         </nav>
     </header>
     <main id="home">
+        <div class="saudacoes-container container">
+            <h3><span id="saudacao"></span></h3>
+        </div>
         <div class="home-container container">
             <h1>Resumo</h1>
             <p class="atividade">Atividade atual: <i id="atividadeAtual"></i></p>
             <p class="atividade">Próxima atividade: <i id="atividadeProx"></i></p>
             <p class="atividade">Copos de água: <i id="coposCount"></i><a onclick="somaCopo(true)"> <i class="bi bi-plus-lg"></i></a></p>
+            <p class="atividade">Meta: <i id="meta"></i></p>
         </div>
         <div class="crono-water">
             <div id="cronograma" class="cronograma-container container">
@@ -135,5 +142,25 @@
     <script src="source/table.js"></script>
     <script src="source/water.js"></script>
     <script src="source/cups.js"></script>
+    <script src="source/configs.js"></script>
+    <script>
+        const data = new Date;
+        var hour = data.getHours()
+        
+        if(hour < 12) {
+            document.getElementById('saudacao').innerHTML += "<i class='bi bi-sunrise'></i> Bom dia, " + getNome();
+        } else {
+            if(hour < 18) {
+                document.getElementById('saudacao').innerHTML += "<i class='bi bi-sun'></i> Boa tarde, " + getNome();
+            } else {
+                document.getElementById('saudacao').innerHTML += "<i class='bi bi-moon'></i> Boa noite, " + getNome();
+            }
+        }
+
+        document.getElementById("meta").textContent = getMetaCopos() + " Copos";
+        contaCopos();
+
+        timer(getMinCopos());
+    </script>
 </body>
 </html>

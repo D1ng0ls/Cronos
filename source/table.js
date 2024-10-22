@@ -1,8 +1,10 @@
+let tempNumber = 0;
+
 alterTable();
 
 setInterval(function() {
     alterTable(); // Alerta ao usuário
-}, 10); // 900000 milissegundos = 15 minutos
+}, 1000); // 900000 milissegundos = 15 minutos
 
 function alterTable() {         
     let color = "#ddd"
@@ -11,7 +13,6 @@ function alterTable() {
     let hora = data.getHours();
     let minutes = data.getMinutes();
     let number;
-    let tempNumber = 0;
 
     if(hora <9) {
         number = 0;
@@ -69,9 +70,7 @@ function alterTable() {
                 }
             }
         }
-    }
-
-    
+    }    
 
     if (number == 0) {
         document.getElementById("atividadeAtual").textContent = "Começa mais tarde...";
@@ -86,10 +85,10 @@ function alterTable() {
     }
 
     if (tempNumber != number ){
-        tempNumber = number;
         document.getElementById("tableSound").play();
         document.title = "Próxima atividade...";
+        tempNumber = number;
     }
     
-    document.getElementById("alt"+number).style.background= color;s
+    document.getElementById("at"+number).style.background= color;
 }

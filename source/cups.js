@@ -1,11 +1,13 @@
 document.getElementById("copos").value = localStorage.getItem("aguaConsumida");
 
-contaCopos();
 function contaCopos() {
     var text = "";
     var copos = document.getElementById("copos").value;
     var contador = document.getElementById("coposBebidos")
     var contador2 = document.getElementById("coposCount")
+
+    const min = Math.floor(getMetaCopos()/3);
+    const medium = getMetaCopos() - min;
 
     for(var i=0; i<copos; i++) {
         text += '<i class="bi bi-cup-straw">'
@@ -16,11 +18,11 @@ function contaCopos() {
 
     localStorage.setItem('aguaConsumida', copos);
 
-    if (copos <= 3) {
+    if (copos <= min) {
         contador.innerHTML += "<br><br><span style='color:var(--color-red)'>Ruim!</span>"
         contador2.style.color = "var(--color-red)";
     } else {
-        if(copos <= 6) {
+        if(copos < medium) {
             contador.innerHTML += "<br><br><span style='color:var(--color-blue)'>Ok!</span>"
             contador2.style.color = "var(--color-blue)";
         } else {
