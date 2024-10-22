@@ -12,6 +12,7 @@ function setSettings() {
         setting.metaCopos = document.getElementById('cups').value;
         setting.minCopos = document.getElementById('mins').value;
         setLocalStorage();
+        alert("Dados Salvos!")
     } catch (error) {
         console.error(error);
     }
