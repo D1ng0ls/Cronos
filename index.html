@@ -23,6 +23,9 @@
                     <a href="#agua"><i class="bi bi-cup-straw"></i> Consumo de Água</a>
                 </li>
                 <li>
+                    <a href="#notes"><i class="bi bi-journals"></i> Anotações</a>
+                </li>
+                <li>
                     <a href="configs.html"><i class="bi bi-gear"></i></a>
                 </li>
             </ul>
@@ -30,14 +33,16 @@
     </header>
     <main id="home">
         <div class="saudacoes-container container">
-            <h3><span id="saudacao"></span></h3>
+            <h3 id="saudacao"></h3>
+            <i id="diaAtual"></i>
         </div>
         <div class="home-container container">
             <h1>Resumo</h1>
             <p class="atividade">Atividade atual: <i id="atividadeAtual"></i></p>
             <p class="atividade">Próxima atividade: <i id="atividadeProx"></i></p>
-            <p class="atividade">Copos de água: <i id="coposCount"></i><a onclick="somaCopo(true)"> <i class="bi bi-plus-lg"></i></a></p>
+            <p class="atividade">Copos de água: <i id="coposCount"></i><a onclick="somaCopo(true)"> <i class="bi bi-plus-lg"></i></a><a onclick="somaCopo(false)"> <i class="bi bi-dash-lg"></i></a></p>
             <p class="atividade">Meta: <i id="meta"></i></p>
+            <p class="atividade">Anotações: <i id="anotacaoCount"></i></p>
         </div>
         <div class="crono-water">
             <div id="cronograma" class="cronograma-container container">
@@ -135,27 +140,43 @@
                 <audio id="alarmSound" src="source/media/clock-alarm.mp3"></audio>
             </div>
         </div>
-        
+        <div id="notes" class="notes-container container">
+            <h2><i class="bi bi-journals"></i> Anotações <i class="bi bi-plus-lg" onclick="addNote()" id="add-note"></i></h2>
+            <div id="notations" class="notations">
+                <!-- <div class="note note${countNotes}"><i class="bi bi-trash3" id="excluir"></i><textarea name="note${countNotes}" id="note${countNotes}"></textarea></div> -->
+            </div>
+        </div>
     </main>
     <footer></footer>
 
+    <script>
+        //resetNote();       
+    </script>
     <script src="source/table.js"></script>
     <script src="source/water.js"></script>
     <script src="source/cups.js"></script>
     <script src="source/configs.js"></script>
+    <script src="source/notes.js"></script>
     <script>
         const data = new Date;
         var hour = data.getHours()
         
+        var saudacao = document.getElementById('saudacao');
         if(hour < 12) {
-            document.getElementById('saudacao').innerHTML += "<i class='bi bi-sunrise'></i> Bom dia, " + getNome();
+            saudacao.innerHTML += "<i class='bi bi-sunrise'></i> Bom dia, ";
         } else {
             if(hour < 18) {
-                document.getElementById('saudacao').innerHTML += "<i class='bi bi-sun'></i> Boa tarde, " + getNome();
+                saudacao.innerHTML += "<i class='bi bi-sun'></i> Boa tarde, ";
             } else {
-                document.getElementById('saudacao').innerHTML += "<i class='bi bi-moon'></i> Boa noite, " + getNome();
+                saudacao.innerHTML += "<i class='bi bi-moon'></i> Boa noite, ";
             }
         }
+        saudacao.innerHTML += getNome();
+
+        var diaAtual = document.getElementById("diaAtual");
+        const diaSemana = ["Domingo", "Segunda-Feira", "Terça-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira", "Sábado"]
+        const mesNome = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
+        diaAtual.innerHTML = diaSemana[data.getDay()] + ", " + data.getDate() + " de " + mesNome[data.getMonth()] + " de " + data.getFullYear();
 
         document.getElementById("meta").textContent = getMetaCopos() + " Copos";
         contaCopos();
