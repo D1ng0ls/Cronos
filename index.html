@@ -5,32 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cronograma e água</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="source/style.css">
+    <link rel="stylesheet" href="source/style/style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li>
-                    <a href="#home">
-                        <i class="bi bi-house-door-fill"></i> Home
-                    </a>
-                </li>
-                <li>
-                    <a href="#cronograma"><i class="bi bi-calendar3"></i> Cronograma</a>
-                </li>
-                <li>
-                    <a href="#agua"><i class="bi bi-cup-straw"></i> Consumo de Água</a>
-                </li>
-                <li>
-                    <a href="#notes"><i class="bi bi-journals"></i> Anotações</a>
-                </li>
-                <li>
-                    <a href="configs.html"><i class="bi bi-gear"></i></a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    <header id="header"></header>
     <main id="home">
         <div class="saudacoes-container container">
             <h3 id="saudacao"></h3>
@@ -147,16 +125,17 @@
             </div>
         </div>
     </main>
-    <footer></footer>
+    <footer id="footer"></footer>
 
     <script>
         //resetNote();       
     </script>
-    <script src="source/table.js"></script>
-    <script src="source/water.js"></script>
-    <script src="source/cups.js"></script>
-    <script src="source/configs.js"></script>
-    <script src="source/notes.js"></script>
+    <script src="source/script/include.js"></script>
+    <script src="source/script/table.js"></script>
+    <script src="source/script/water.js"></script>
+    <script src="source/script/cups.js"></script>
+    <script src="source/script/configs.js"></script>
+    <script src="source/script/notes.js"></script>
     <script>
         const data = new Date;
         var hour = data.getHours()

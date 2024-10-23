@@ -1,0 +1,233 @@
+@import url("default.css");
+
+main{
+    padding-top: 100px;
+    width: 90%;
+    margin: auto;
+}
+
+.saudacoes-container h3 {
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+#diaAtual {
+    color: var(--color-gray);
+    font-weight: 400;
+}
+
+.atividade {
+    font-weight: 700;
+    margin: 20px 0;
+}
+
+.atividade a {
+    color: var(--color-black);
+    cursor: pointer;
+}
+
+#atividadeAtual, #atividadeProx, #meta, #anotacaoCount {
+    font-weight: 500;
+    text-decoration: underline;
+    color: var(--color-block);
+}
+
+#atividadeProx {
+    color: var(--color-lightgray);
+}
+
+#coposCount {
+    color: var(--color-blue);
+}
+
+.crono-water {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap-reverse;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    border: 1px solid var(--color-dirtywhite);;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: var(--color-gray);
+    color: var(--color-white);
+    text-align: center;
+}
+
+/* th:first-child {
+    border-top-left-radius: 10px;
+}
+
+th:last-child {
+    border-top-right-radius: 8px;
+} */
+
+tr:nth-child(even) {
+    background-color: var(--color-smoothwhite);
+}
+
+tr:hover {
+    background-color: var(--color-dirtywhite);
+}
+
+.container {
+    margin-bottom: 50px;
+}
+
+.btns {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+#coposBebidos {
+    margin-bottom: 30px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+button {
+    color: var(--color-lightwhite);
+    background-color: var(--color-green);
+    border-radius: 8px;
+    padding: 10px 20px;
+    border: 1px solid currentColor;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+button:hover {
+    background-color: var(--color-darkgreen);
+}
+
+input {
+    padding: 10px;
+    width: 15px;
+    border-radius: 8px;
+    border: none;
+    margin: 0 5px;
+}
+
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+    
+}
+
+input[type=number] { 
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+#sumButton {
+    background-color: var(--color-blue);
+    color: var(--color-lightwhite);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+#minusButton {
+    background-color: var(--color-red);
+    color: var(--color-lightwhite);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+#timer {
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin: 25px 0 20px;
+}
+
+#time {
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.aviso {
+    background-color: var(--color-yellow);
+    padding: 7px 12px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.notations {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    gap: 50px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+/* .notations::after {
+    content: "\f64d";
+    display: inline-block;
+    font-family: bootstrap-icons !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    vertical-align: -.125em;
+    -webkit-font-smoothing: antialiased;
+    font-size: 1.5rem;
+    top: 50;
+} */
+
+.note {
+    min-width: 20%;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: right;
+    align-items: flex-end;
+    border: 1px solid var(--color-dirtywhite);
+    border-radius: 20px;
+    flex-wrap: wrap;
+}
+
+.note textarea {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 20px;
+    padding: 20px;
+    font-size: 1rem;
+    resize: none;
+}
+
+#add-note {
+    font-size: 1.5rem;
+    cursor:  pointer;
+}
+
+#add-note::before {
+transition: all 0.2s;
+}
+
+#add-note:hover::before {
+    transform: rotateZ(90deg);
+}
+
+#excluir {
+    font-size: 1.5rem;
+    position: absolute;
+    color: var(--color-red);
+    padding: 10px;
+    cursor: pointer;
+}

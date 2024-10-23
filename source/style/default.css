@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url(reset.css);
+@import url(header.css);
+
+:root {
+    /* CORES*/
+    /* PALETA DO SITE */
+    --color-black: #000;
+    --color-gray: #1f1f1f;
+    --color-lightgray: #646464;
+    --color-red: #eb0b1e;
+    --color-blue: #007bff;
+    --color-green: #28a745;
+    --color-darkgreen: #217e36;
+    --color-white: #fff;
+    --color-dirtywhite: #ddd;
+    --color-smoothwhite: #f2f2f2;
+    --color-lightwhite: #f1f1f1;
+    --color-yellow: #ffc107;
+
+
+    /* FONTES */
+    /* PADRONIZAÇÃO */
+    --font-default: "Montserrat", sans-serif;
+    font-size: 16px;
+    
+    /* TAMANHO DA FONTE */
+    --font-size-h1: 2.25rem;
+    --font-size-h2: 1.5rem;
+    --font-size-h3: 1.25rem;
+    --font-size-body: 1rem;
+
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    font-size: var(--font-size-h1);
+    font-weight: bold;
+}
+
+h2 {
+    font-size: var(--font-size-h2);
+    font-weight: bold;
+}
+
+h3 {
+    font-size: var(--font-size-h3);
+}
+
+body {
+    font-size: var(--font-size-body);
+    font-family: var(--font-default);
+}
+
+a {
+    color: currentColor;
+    text-decoration: none;
+}
