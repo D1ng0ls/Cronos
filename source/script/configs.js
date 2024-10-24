@@ -1,3 +1,11 @@
+function verifyInputs() {
+    if (document.getElementById('nome').value == "" || document.getElementById('cups').value == "" || document.getElementById('mins').value == "") {
+        document.getElementById("btnSalvar").disabled = true;
+    } else {
+        document.getElementById("btnSalvar").disabled = false;
+    }
+}
+
 var setting = {
     nome: "",
     sobrenome: "",
@@ -8,7 +16,6 @@ var setting = {
 function setSettings() {
     try {
         setting.nome = document.getElementById('nome').value;
-        setting.sobrenome = document.getElementById('sobrenome').value;
         setting.metaCopos = document.getElementById('cups').value;
         setting.minCopos = document.getElementById('mins').value;
         setLocalStorage();
@@ -20,17 +27,12 @@ function setSettings() {
 
 function setLocalStorage() {
     localStorage.setItem('nome', setting.nome);
-    localStorage.setItem('sobrenome', setting.sobrenome);
     localStorage.setItem('metaCopos', setting.metaCopos);
     localStorage.setItem('minCopos', setting.minCopos);
 }
 
 function getNome() {
     return localStorage.getItem('nome');
-}
-
-function getSobrenome() {
-    return localStorage.getItem('sobrenome');
 }
 
 function getMetaCopos() {

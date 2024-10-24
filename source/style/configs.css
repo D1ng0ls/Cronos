@@ -8,7 +8,6 @@ main{
 
 form {
     padding: 20px;
-   
 }
 
 .form-inputs {
@@ -26,20 +25,18 @@ form {
     margin-left: 10px;
 }
 
-.cp-nome {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    align-items: center;
-}
-
 form button {
     background-color: var(--color-green);
     color: var(--color-white);
     border: 1px solid var(--color-green);
     padding: 5px 15px;
-    border-radius: 8px;
+    border-radius: 4px;
     cursor: pointer;
+    margin-top: 20px;
+}
+
+form button:disabled {
+    filter: grayscale(1);
 }
 
 form button:hover {

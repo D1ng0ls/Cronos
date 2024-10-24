@@ -13,20 +13,18 @@
         <h1>Configurações</h1>
         <form>
             <div class="form-inputs">
-                <div class="campo cp-nome">
-                    <span>Nome: </span><input type="text" name="nome" id="nome">
-                    <span>Sobrenome: </span><input type="text" name="sobrenome" id="sobrenome">
-                </div>
-                <div class="campo cp-copos"><span>Meta copos de água: </span><input type="number" value="10" min="3" max="99" name="cups" id="cups"></div>
-                <div class="campo cp-minutos"><span>Minutos para aviso: </span><input type="number" name="min" id="mins" value="45" min="15" max="120"></div>
+                <div class="campo cp-nome"><span>Nome: </span><input type="text" name="nome" id="nome" required oninput="verifyInputs()"></div>
+                <div class="campo cp-copos"><span>Meta copos de água: </span><input type="number" value="10" min="3" max="99" name="cups" id="cups" required oninput=" verifyInputs()"></div>
+                <div class="campo cp-minutos"><span>Minutos para aviso: </span><input type="number" name="min" id="mins" value="45" min="15" max="120" required oninput="verifyInputs()"></div>
             </div>
-            <button type="button" onclick="setSettings()">Salvar</button>
+            <button type="submit" id="btnSalvar" onclick="setSettings()">Salvar</button>
         </form>
     </main>
     <footer id="footer"></footer>
 
     <script src="source/script/include.js"></script>
     <script src="source/script/configs.js"></script>
+    <script src="source/script/header.js"></script>
     <script>
         document.getElementById("nome").value = getNome();
         document.getElementById("sobrenome").value = getSobrenome();
