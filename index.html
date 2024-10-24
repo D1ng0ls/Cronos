@@ -15,7 +15,7 @@
             <i id="diaAtual"></i>
         </div>
         <div class="home-container container">
-            <h1>Resumo</h1>
+            <h1># Resumo</h1>
             <p class="atividade">Atividade atual: <i id="atividadeAtual"></i></p>
             <p class="atividade">Próxima atividade: <i id="atividadeProx"></i></p>
             <p class="atividade">Copos de água: <i id="coposCount"></i><a onclick="somaCopo(true)"> <i class="bi bi-plus-lg"></i></a><a onclick="somaCopo(false)"> <i class="bi bi-dash-lg"></i></a></p>
@@ -128,11 +128,6 @@
     <footer id="footer"></footer>
 
     <script>
-        function openMenu() {
-            document.getElementById("menu").classList.toggle("open");
-            document.getElementById("body").classList.toggle("hide");
-        }
-
         //resetNote();       
     </script>
     <script src="source/script/include.js"></script>
@@ -142,10 +137,37 @@
     <script src="source/script/configs.js"></script>
     <script src="source/script/notes.js"></script>
     <script>
-        const data = new Date;
-        var hour = data.getHours()
+        var data = new Date;
+        var hour = data.getHours();
+        var diaAtual = document.getElementById("diaAtual");
+        const diaSemana = ["Domingo", "Segunda-Feira", "Terça-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira", "Sábado"]
+        const mesNome = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
         
         var saudacao = document.getElementById('saudacao');
+
+        var dots = 0;
+
+        msgDia();
+        
+        function msgDia() {
+            data = new Date;
+            hour = data.getHours()
+            diaAtual.innerHTML = diaSemana[data.getDay()] + ", " + data.getDate() + " de " + mesNome[data.getMonth()] + " de " + data.getFullYear() + " - " + data.getHours() + "h " + data.getMinutes() + "min";
+            dots++;
+
+            if (dots <= 3) {
+                for(var i=0; i<dots; i++) {
+                    diaAtual.innerHTML += "."
+                }
+            } else {
+                diaAtual.innerHTML = diaSemana[data.getDay()] + ", " + data.getDate() + " de " + mesNome[data.getMonth()] + " de " + data.getFullYear() + " - " + data.getHours() + "h " + data.getMinutes() + "min";   
+                dots = 0;
+            }
+            
+        }
+
+        setInterval(msgDia, 400)
+
         if(hour < 12) {
             saudacao.innerHTML += "<i class='bi bi-sunrise'></i> Bom dia, ";
         } else {
@@ -156,11 +178,6 @@
             }
         }
         saudacao.innerHTML += getNome();
-
-        var diaAtual = document.getElementById("diaAtual");
-        const diaSemana = ["Domingo", "Segunda-Feira", "Terça-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira", "Sábado"]
-        const mesNome = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
-        diaAtual.innerHTML = diaSemana[data.getDay()] + ", " + data.getDate() + " de " + mesNome[data.getMonth()] + " de " + data.getFullYear();
 
         document.getElementById("meta").textContent = getMetaCopos() + " Copos";
         contaCopos();

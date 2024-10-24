@@ -6,7 +6,13 @@ fetch('source/library/header.html')
   })
   .catch(error => {
     console.error('Erro ao carregar o cabeçalho:', error);
-  });
+});
+
+function openMenu() {
+  document.getElementById("menu").classList.toggle("open");
+  document.getElementById("body").classList.toggle("hide");
+}
+
 
 //adiciona o footer
 // fetch('assets/library/footer.html')
