@@ -6,8 +6,8 @@ function contaCopos() {
     var contador = document.getElementById("coposBebidos")
     var contador2 = document.getElementById("coposCount")
 
-    const min = Math.floor(getMetaCopos()/3);
-    const medium = getMetaCopos() - min;
+    const min = Math.floor(getSettingValue("cups")/3);
+    const medium = getSettingValue("cups") - min;
 
     for(var i=0; i<copos; i++) {
         text += '<i class="bi bi-cup-straw">'

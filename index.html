@@ -124,9 +124,27 @@
                 <!-- <div class="note note${countNotes}"><i class="bi bi-trash3" id="excluir"></i><textarea name="note${countNotes}" id="note${countNotes}"></textarea></div> -->
             </div>
         </div>
+        <div id="tarefas" class="tarefas-container container">
+            <h2><i class="bi bi-list-check"></i> Tarefas <i class="bi bi-plus-lg" onclick="addTask()" id="add-note"></i></h2>
+            <div class="tasks-todo" id="tasks">
+                <div class="task task1" id="task1">
+                    <input type="text" name="task1" id="todo1" maxlength="50">
+                    <input type="checkbox" name="check1" id="check1">
+                    <i class="bi bi-trash3" id="excluir"></i>
+                </div>
+            </div>
+        </div>
     </main>
+    <div class="unlock" id="unlock">
+        <div class="input-unlock">
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha">
+        </div>
+        <button id="btn-unlock">Desbloquear <i class="bi bi-unlock"></i></button>
+    </div>
     <footer id="footer"></footer>
 
+    <noscript>Ative o JavaScript na página para ativar as funcionalidades</noscript>
     <script>
         //resetNote();       
     </script>
@@ -177,12 +195,16 @@
                 saudacao.innerHTML += "<i class='bi bi-moon'></i> Boa noite, ";
             }
         }
-        saudacao.innerHTML += getNome();
+        saudacao.innerHTML += getSettingValue('nome');
 
-        document.getElementById("meta").textContent = getMetaCopos() + " Copos";
+        document.getElementById("meta").textContent = getSettingValue('cups') + " Copos";
         contaCopos();
 
-        timer(getMinCopos());
+        timer(getSettingValue("mins"));
+    </script>
+    <script src="source/script/login.js"></script>
+    <script>
+        
     </script>
 </body>
 </html>

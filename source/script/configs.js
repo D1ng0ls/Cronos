@@ -8,16 +8,17 @@ function verifyInputs() {
 
 var setting = {
     nome: "",
-    sobrenome: "",
-    metaCopos: 10,
-    minCopos: 45
+    senha: "",
+    cups: 10,
+    mins: 45
 }
 
 function setSettings() {
     try {
         setting.nome = document.getElementById('nome').value;
-        setting.metaCopos = document.getElementById('cups').value;
-        setting.minCopos = document.getElementById('mins').value;
+        setting.cups = document.getElementById('cups').value;
+        setting.mins = document.getElementById('mins').value;
+        setting.senha = document.getElementById('senha').value;
         setLocalStorage();
         alert("Dados Salvos!")
     } catch (error) {
@@ -27,18 +28,11 @@ function setSettings() {
 
 function setLocalStorage() {
     localStorage.setItem('nome', setting.nome);
-    localStorage.setItem('metaCopos', setting.metaCopos);
-    localStorage.setItem('minCopos', setting.minCopos);
+    localStorage.setItem('cups', setting.cups);
+    localStorage.setItem('mins', setting.mins);
+    localStorage.setItem('senha', setting.senha);
 }
 
-function getNome() {
-    return localStorage.getItem('nome');
-}
-
-function getMetaCopos() {
-    return localStorage.getItem('metaCopos');
-}
-
-function getMinCopos() {
-    return localStorage.getItem('minCopos');
+function getSettingValue(key) {
+    return  localStorage.getItem(key) || null;
 }

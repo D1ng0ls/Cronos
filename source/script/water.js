@@ -5,7 +5,7 @@ function timer(globalSeconds) {
 
     document.getElementById("startButton").addEventListener("click", function() {
         clearInterval(timer); // Limpa qualquer contador existente
-        seconds = globalSeconds * 60;
+        seconds = globalSeconds  * 60;
         updateTimerDisplay();
         timer = setInterval(function() {
             seconds--;
