@@ -26,7 +26,25 @@ main{
     cursor: pointer;
 }
 
-#atividadeAtual, #atividadeProx, #meta, #anotacaoCount {
+.list-atividade p {
+    margin-bottom: 5px;
+}
+
+.list-atividade ul {
+    padding-left: 20px;
+}
+
+.list-atividade ul>li {
+    font-weight: 600;
+    margin: 10px 0;
+    color: var(--color-red);
+}
+
+.list-atividade ul>li:nth-child(1) {
+    color: var(--color-green);
+}
+
+#atividadeAtual, #atividadeProx, #meta, #anotacaoCount, #tasksNaoFeitas, #tasksFeitas {
     font-weight: 500;
     text-decoration: underline;
     color: var(--color-block);
@@ -262,11 +280,6 @@ transition: all 0.2s;
     border: var(--color-dirtywhite);
 }
 
-.task i {
-    
-}
-
-
 
 /* senha */
 .unlock {
@@ -291,4 +304,14 @@ transition: all 0.2s;
     width: 300px;
     border: 1px solid var(--color-dirtywhite);
     margin: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.checked {
+    color: var(--color-lightgray);
+    text-decoration: line-through;
+    transition: all 0.3s;
 }

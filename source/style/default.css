@@ -54,6 +54,8 @@ h3 {
 body {
     font-size: var(--font-size-body);
     font-family: var(--font-default);
+    /* background: url(https://uploads.dailydot.com/2024/07/side-eye-cat.jpg?q=65&auto=format&w=1600&ar=2:1&fit=crop) no-repeat fixed center;
+    background-size: cover; */
 }
 
 a {

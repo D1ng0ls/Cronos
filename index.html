@@ -21,6 +21,14 @@
             <p class="atividade">Copos de água: <i id="coposCount"></i><a onclick="somaCopo(true)"> <i class="bi bi-plus-lg"></i></a><a onclick="somaCopo(false)"> <i class="bi bi-dash-lg"></i></a></p>
             <p class="atividade">Meta: <i id="meta"></i></p>
             <p class="atividade">Anotações: <i id="anotacaoCount"></i></p>
+            <div class="list-atividade">
+                <p class="atividade">Tarefas:</p>
+                <ul>
+                    <li>Concluídas: <i id="tasksFeitas"></i></li>
+                    <li>Para Fazer: <i id="tasksNaoFeitas"></i></li>
+                </ul>
+            </div>
+            
         </div>
         <div class="crono-water">
             <div id="cronograma" class="cronograma-container container">
@@ -127,11 +135,12 @@
         <div id="tarefas" class="tarefas-container container">
             <h2><i class="bi bi-list-check"></i> Tarefas <i class="bi bi-plus-lg" onclick="addTask()" id="add-note"></i></h2>
             <div class="tasks-todo" id="tasks">
-                <div class="task task1" id="task1">
+                <!-- <div class="task task1" id="task1">
                     <input type="text" name="task1" id="todo1" maxlength="50">
                     <input type="checkbox" name="check1" id="check1">
                     <i class="bi bi-trash3" id="excluir"></i>
-                </div>
+                    <i class="hidden" id="dataTask1"></i>
+                </div> -->
             </div>
         </div>
     </main>
@@ -145,15 +154,13 @@
     <footer id="footer"></footer>
 
     <noscript>Ative o JavaScript na página para ativar as funcionalidades</noscript>
-    <script>
-        //resetNote();       
-    </script>
     <script src="source/script/include.js"></script>
     <script src="source/script/table.js"></script>
     <script src="source/script/water.js"></script>
     <script src="source/script/cups.js"></script>
     <script src="source/script/configs.js"></script>
     <script src="source/script/notes.js"></script>
+    <script src="source/script/tasks.js"></script>
     <script>
         var data = new Date;
         var hour = data.getHours();
@@ -204,7 +211,8 @@
     </script>
     <script src="source/script/login.js"></script>
     <script>
-        
+        // resetNote()
+        // resetTask()
     </script>
 </body>
 </html>
