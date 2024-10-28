@@ -25,6 +25,7 @@ function addTask() {
 
     saveTask(countTasks);
     atualizaContadorTask();
+    carregaTask();
 }
 
 function transcreveTask(todo) {
