@@ -10,7 +10,11 @@ atualizaContadorNote();
 function addNote() {
     countNotes++;
 
-    document.getElementById("notations").innerHTML += `<div class="contaNotas note note${countNotes}" id="notation${countNotes}"><i class="bi bi-trash3" id="excluir" onclick="deletaNote(${countNotes})"></i><textarea name="note${countNotes}" id="note${countNotes}" onchange="saveNote(${countNotes})"></textarea></div>`
+    document.getElementById("notations").innerHTML += `<div class="contaNotas note note${countNotes}" id="notation${countNotes}">
+                                                    <i class="bi bi-pin-angle" id="pin" onclick="pinned(${countNotes})"></i>
+                                                    <i class="bi bi-trash3" id="excluir" onclick="deletaNote(${countNotes})"></i>
+                                                    <textarea name="note${countNotes}" id="note${countNotes}" onchange="saveNote(${countNotes})"></textarea>
+                                                    </div>`
     localStorage.setItem("countNotesStorage", countNotes );
 
     saveNote(countNotes);

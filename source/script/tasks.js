@@ -47,7 +47,7 @@ function saveTask2() {
 
 function deletaTask(task) {
     document.getElementById("task"+task).remove();
-    saveTask();
+    saveTask2();
     atualizaContadorTask();
 }
 
@@ -92,4 +92,5 @@ function checkTask(task){
 
     localStorage.setItem("countTasksOk", countTasksOk)
     saveTask2()
+    atualizaContadorTask();
 }

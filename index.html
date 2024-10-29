@@ -9,6 +9,10 @@
 </head>
 <body id="body">
     <header id="header"></header>
+    <div class="fixed hidden">
+<textarea id="fixed" disabled></textarea>
+    <i class="bi bi-pin-fill" onclick="unpin()"></i>
+    </div>
     <main id="home">
         <div class="saudacoes-container container">
             <h3 id="saudacao"></h3>
@@ -127,9 +131,9 @@
             </div>
         </div>
         <div id="notes" class="notes-container container">
-            <h2><i class="bi bi-journals"></i> Anotações <i class="bi bi-plus-lg" onclick="addNote()" id="add-note"></i></h2>
+            <h2><i class="bi bi-journals"></i> Anotações <i class="bi bi-plus-lg" onclick="addNote()" id="add-note"></i> <i class="bi bi-download" onclick="download()" id="download-note"></i></h2>
             <div id="notations" class="notations">
-                <!-- <div class="note note${countNotes}"><i class="bi bi-trash3" id="excluir"></i><textarea name="note${countNotes}" id="note${countNotes}"></textarea></div> -->
+                <!-- <div class="note note${countNotes}"><i class="bi bi-pin" id="pin"></i><i class="bi bi-trash3" id="excluir"></i><textarea name="note${countNotes}" id="note${countNotes}"></textarea></div> -->
             </div>
         </div>
         <div id="tarefas" class="tarefas-container container">
@@ -161,6 +165,7 @@
     <script src="source/script/configs.js"></script>
     <script src="source/script/notes.js"></script>
     <script src="source/script/tasks.js"></script>
+    <script src="source/script/login.js"></script>
     <script>
         var data = new Date;
         var hour = data.getHours();
@@ -208,11 +213,70 @@
         contaCopos();
 
         timer(getSettingValue("mins"));
+
+        atualizaContadorTask();
     </script>
-    <script src="source/script/login.js"></script>
     <script>
         // resetNote()
         // resetTask()
+
+        if(localStorage.getItem('pinnedId') == null) {
+            localStorage.setItem('pinnedId', 0)
+        }
+
+        if(localStorage.getItem('pinnedId') != 0) {    
+            getPin(localStorage.getItem('pinnedId'))
+            console.log("pinned global is " + localStorage.getItem('pinnedId'))
+        }
+        
+        function pinned(note) {
+            if (localStorage.getItem('pinnedId') != note) {
+                document.getElementById('fixed').textContent = document.getElementById('note'+ note).textContent
+                document.querySelector('.fixed').classList.remove("hidden")
+                
+                localStorage.setItem('pinnedId', note)
+            } else {
+                document.querySelector('.fixed').classList.add("hidden")
+                localStorage.setItem('pinnedId', 0)         
+            }
+
+            console.log("pinned global is " + localStorage.getItem('pinnedId'))
+        }
+
+        function getPin(note) {
+            document.getElementById('fixed').textContent = document.getElementById('note'+ note).textContent
+            document.querySelector('.fixed').classList.remove("hidden")
+        }
+
+        function unpin() {
+            pinned(localStorage.getItem('pinnedId'))
+        }
+    </script>
+    <script>
+        function download() {
+            let content = "";
+
+            for (var i = 1; i <= localStorage.getItem('countNotesStorage'); i++) {
+                try {
+                    content += `Anotação ${i}: \n${document.getElementById('note'+i).textContent}\n\n`;
+                } catch (ex) {
+                    content += '';
+                }
+            }
+
+            
+            const blob = new Blob([content], { type: "text/plain" });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "anotacoes.txt";
+            document.body.appendChild(a);
+            a.click();
+
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
     </script>
 </body>
 </html>
