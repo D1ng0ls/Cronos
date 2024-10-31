@@ -6,6 +6,7 @@
     <title>Cronograma e água</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="source/style/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body id="body">
     <header id="header"></header>
@@ -36,7 +37,7 @@
         </div>
         <div class="crono-water">
             <div id="cronograma" class="cronograma-container container">
-                <h2><i class="bi bi-calendar3"></i> Cronograma <i class="bi bi-plus-lg" onclick="openAddRow(0)" id="add-note"></i></h2>
+                <h2><i class="bi bi-calendar3"></i> Cronograma <i class="bi bi-plus-lg" onclick="openAddRow(0)" id="add-note"></i> <i class="bi bi-download" onclick="downloadCrono()" id="download-note"></i></h2>
                 <div class="add-row hidden">
                     <input type="time" id="hora" name="hora">
                     <input type="text" id="desc" name="desc">
@@ -92,7 +93,7 @@
             </div>
         </div>
         <div id="notes" class="notes-container container">
-            <h2><i class="bi bi-journals"></i> Anotações <i class="bi bi-plus-lg" onclick="addNote()" id="add-note"></i> <i class="bi bi-download" onclick="download()" id="download-note"></i></h2>
+            <h2><i class="bi bi-journals"></i> Anotações <i class="bi bi-plus-lg" onclick="addNote()" id="add-note"></i> <i class="bi bi-download" onclick="downloadNotes()" id="download-note"></i></h2>
             <div id="notations" class="notations">
                 <!-- <div class="note note${countNotes}"><i class="bi bi-pin" id="pin"></i><i class="bi bi-trash3" id="excluir"></i><textarea name="note${countNotes}" id="note${countNotes}"></textarea></div> -->
             </div>
@@ -110,11 +111,13 @@
         </div>
     </main>
     <div class="unlock" id="unlock">
-        <div class="input-unlock">
-            <label for="senha">Senha:</label>
-            <input type="password" id="senha" name="senha">
-        </div>
-        <button type="submit" id="btn-unlock">Desbloquear <i class="bi bi-unlock"></i></button>
+        <form>
+            <div class="input-unlock">
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha">
+            </div>
+            <button type="submit" id="btn-unlock">Desbloquear <i class="bi bi-unlock"></i></button>
+        </form>
     </div>
     <footer id="footer"></footer>
 
@@ -216,7 +219,17 @@
         }
     </script>
     <script>
-        function download() {
+        function downloadCrono() {
+            html2canvas(document.querySelector(".table-cronos table")).then(canvas => {
+                // Cria um link para download da imagem
+                const link = document.createElement('a');
+                link.href = canvas.toDataURL('image/png'); // Converte o canvas em URL de imagem
+                link.download = 'cronograma.png'; // Nome do arquivo
+                link.click(); // Simula o clique no link
+            });
+        }
+
+        function downloadNotes() {
             let content = "";
 
             for (var i = 1; i <= localStorage.getItem('countNotesStorage'); i++) {
