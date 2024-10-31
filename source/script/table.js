@@ -4,61 +4,58 @@ if(localStorage.getItem("countRowsStorage") != null || localStorage.getItem("cou
     countRows = localStorage.getItem("countRowsStorage");
 }
 
-// let tempNumber = 0;
+let tempNumber = 0;
 
-// alterTable();
+alterTable();
 
-// setInterval(function() {
-//     alterTable(); // Alerta ao usuário
-// }, 1000); // 900000 milissegundos = 15 minutos
+setInterval(function() {
+    alterTable(); // Alerta ao usuário
+}, 1000); // 900000 milissegundos = 15 minutos
 
-// function alterTable() {         
-//     let color = "#ddd"
-//     let data = new Date;
+function alterTable() {         
+    let color = "#ddd"
+    let data = new Date;
     
-//     let hora = data.getHours();
-//     let minutes = data.getMinutes();
-//     let number = countRows;
-//     let maxNumber;
-//     let minNumber;
+    let hora = data.getHours();
+    let minutes = data.getMinutes();
+    let horaAtual = hora + ":" + minutes
+    const max = document.querySelectorAll('[id^="row"]')
+    const at = document.querySelectorAll('[id^="atividade"]')
 
-//     verifyRow()
-
-//     function verifyRow() {
-//         for (let i = countRows; i >= 0; i--) {
-//             if (document.getElementById("row"+i)) {
-//                 maxNumber = i;
-//                 break
-//             }
-//         }
-//         for (let i = 0; i <= countRows; i++) {
-//             if (document.getElementById("row"+i)) {
-//                 minNumber = i;
-//                 break
-//             }
-//         }
-//     }
-
-//     if (number == minNumber) {
-//         document.getElementById("atividadeAtual").textContent = "Começa mais tarde...";
-//     } else {
-//         document.getElementById("atividadeAtual").textContent = document.getElementById("atividade3").innerHTML;
-//     }
-
-//     if (number == maxNumber) {
-//         document.getElementById("atividadeProx").textContent = "Só amanhã...";
-//     } else {
-//         document.getElementById("atividadeProx").textContent = document.getElementById("atividade3").innerHTML;
-//     }
-
-//     if (tempNumber != number ){
-//         document.getElementById("tableSound").play();
-//         document.title = "Próxima atividade...";
-//         tempNumber = number;
-//     }
+    document.querySelectorAll('[id^="horario"]').forEach((element, i,elements) => {
+        let horarioAtual = element.innerHTML.trim()
+        
+        if (i < elements.length - 1) {
+            let proximoHorario = elements[i + 1].innerHTML.trim(); // Pega o próximo horário
     
-//     document.getElementById("at"+number).style.background= color;
-// }
+            // Agora você pode comparar `horaAtual` com `horarioAtual` e `proximoHorario`
+            if (horaAtual >= horarioAtual && horaAtual < proximoHorario) {
+                max[i].style.background= color;
+                console.log(i)
+                
+                if (i == 0) {
+                    document.getElementById("atAtual").textContent = "Começa mais tarde...";
+                } else {
+                    document.getElementById("atAtual").textContent = at[i].innerHTML;
+                }
+
+                if (i == 14) {
+                    document.getElementById("atProx").textContent = "Só amanhã...";
+                } else {
+                    document.getElementById("atProx").textContent = at[i+1].innerHTML;
+                }
+
+                if (tempNumber != i ){
+                    document.getElementById("tableSound").play();
+                    document.title = "Próxima atividade...";
+                    tempNumber = i;
+                }
+            } else {
+                max[i].style.background= "";
+            }
+        }
+    })
+}
 
 function openAddRow(id) {
     if (id != 0) {

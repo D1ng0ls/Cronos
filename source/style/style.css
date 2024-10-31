@@ -78,13 +78,13 @@ main{
     color: var(--color-green);
 }
 
-#atividadeAtual, #atividadeProx, #meta, #anotacaoCount, #tasksNaoFeitas, #tasksFeitas {
+#atAtual, #atProx, #meta, #anotacaoCount, #tasksNaoFeitas, #tasksFeitas {
     font-weight: 500;
     text-decoration: underline;
     color: var(--color-block);
 }
 
-#atividadeProx {
+#atProx {
     color: var(--color-lightgray);
 }
 
