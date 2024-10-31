@@ -36,72 +36,33 @@
         </div>
         <div class="crono-water">
             <div id="cronograma" class="cronograma-container container">
-                <h2><i class="bi bi-calendar3"></i> Cronograma</h2>
+                <h2><i class="bi bi-calendar3"></i> Cronograma <i class="bi bi-plus-lg" onclick="openAddRow(0)" id="add-note"></i></h2>
+                <div class="add-row hidden">
+                    <input type="time" id="hora" name="hora">
+                    <input type="text" id="desc" name="desc">
+                    <button type="submit" id="envia" onclick="addRow()">Salvar</button>
+                </div>
                 <div class="table-cronos">
                     <table>
                         <thead>
                             <tr>
                                 <th>Horário</th>
-                                <th>Atividade</th>
+                                <th colspan="2">Atividade</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr id="at1">
-                                <td>9h - 10h</td>
-                                <td id="desc1">Estudo de programação (Java com Spring Boot ou outra linguagem)</td>
-                            </tr>
-                            <tr id="at2">
-                                <td>10h - 10h15</td>
-                                <td id="desc2">Pausa para alongar e relaxar</td>
-                            </tr>
-                            <tr id="at3">
-                                <td>10h15 - 11h</td>
-                                <td id="desc3">Continuação dos estudos de programação</td>
-                            </tr>
-                            <tr id="at4">
-                                <td>11h - 11h15</td>
-                                <td id="desc4">Pausa</td>
-                            </tr>
-                            <tr id="at5">
-                                <td>11h15 - 12h</td>
-                                <td id="desc5">Leitura de livros (meta de 20-30 páginas diárias)</td>
-                            </tr>
-                            <tr id="at6">
-                                <td>12h - 13h</td>
-                                <td id="desc6">Almoço e leitura ou estudo leve (vídeos, podcasts)</td>
-                            </tr>
-                            <tr id="at7">
-                                <td>13h - 14h30</td>
-                                <td id="desc7">Estudos da faculdade (atividades solo)</td>
-                            </tr>
-                            <tr id="at8">
-                                <td>14h30 - 14h45</td>
-                                <td id="desc8">Intervalo</td>
-                            </tr>
-                            <tr id="at9">
-                                <td>14h45 - 16h</td>
-                                <td id="desc9">Cursos extras (preenchendo lacunas ou explorando novos temas)</td>
-                            </tr>
-                            <tr id="at10">
-                                <td>16h - 16h15</td>
-                                <td id="desc10">Pausa</td>
-                            </tr>
-                            <tr id="at11">
-                                <td>16h15 - 18h</td>
-                                <td id="desc11">Continuação dos projetos da faculdade ou leitura de livros</td>
-                            </tr>
-                            <tr id="at12">
-                                <td>18h - 19h</td>
-                                <td id="desc12">Jantar e relaxamento</td>
-                            </tr>
-                            <tr id="at13">
-                                <td>19h - 21h</td>
-                                <td id="desc13">Estudos da faculdade (junto com a turma) e/ou curso O Novo Mercado</td>
-                            </tr>
-                            <tr id="at14">
-                                <td>Após 21h</td>
-                                <td id="desc14">Descanso, hobbies, ou relaxamento</td>
-                            </tr>
+                        <tbody id="tabela">
+                            <!-- <tr>
+                                <td id="horario">
+                                    11:10
+                                </td>
+                                <td id="atividade">
+                                    Acordar
+                                </td>
+                                <td>
+                                    <i class="bi bi-trash3" id="excluir" onclick="deleteRow()"></i>
+                                    <i class="bi bi-pencil" id="editar" onclick="editRow()"></i>
+                                </td>
+                            </tr> -->
                         </tbody>
                     </table>
                     <audio id="tableSound" src="source/media/change-table.mp3"></audio>
@@ -153,7 +114,7 @@
             <label for="senha">Senha:</label>
             <input type="password" id="senha" name="senha">
         </div>
-        <button id="btn-unlock">Desbloquear <i class="bi bi-unlock"></i></button>
+        <button type="submit" id="btn-unlock">Desbloquear <i class="bi bi-unlock"></i></button>
     </div>
     <footer id="footer"></footer>
 
@@ -215,10 +176,12 @@
         timer(getSettingValue("mins"));
 
         atualizaContadorTask();
+        carregaRow();
     </script>
     <script>
         // resetNote()
         // resetTask()
+        // resetRow()
 
         if(localStorage.getItem('pinnedId') == null) {
             localStorage.setItem('pinnedId', 0)
