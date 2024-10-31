@@ -6,7 +6,8 @@
     <title>Cronograma e água</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="source/style/style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.2/jspdf.plugin.autotable.js"></script>
 </head>
 <body id="body">
     <header id="header"></header>
@@ -44,7 +45,7 @@
                     <button type="submit" id="envia" onclick="addRow()">Salvar</button>
                 </div>
                 <div class="table-cronos">
-                    <table>
+                    <table id="table">
                         <thead>
                             <tr>
                                 <th>Horário</th>
@@ -220,13 +221,20 @@
     </script>
     <script>
         function downloadCrono() {
-            html2canvas(document.querySelector(".table-cronos table")).then(canvas => {
-                // Cria um link para download da imagem
-                const link = document.createElement('a');
-                link.href = canvas.toDataURL('image/png'); // Converte o canvas em URL de imagem
-                link.download = 'cronograma.png'; // Nome do arquivo
-                link.click(); // Simula o clique no link
+            var doc = new jsPDF('p', 'pt');
+            var elem = document.getElementById("table");
+            var res = doc.autoTableHtmlToJson(elem);
+            doc.autoTable(res.columns, res.data, {
+                theme: 'grid',
+                styles: {
+                    halign: 'center'
+                },
+                columnStyles: {
+                    1: { halign: 'left'}
+                }
             });
+
+            doc.save("cronograma.pdf");
         }
 
         function downloadNotes() {
