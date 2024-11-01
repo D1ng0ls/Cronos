@@ -24,26 +24,15 @@ function alterTable() {
 
     document.querySelectorAll('[id^="horario"]').forEach((element, i,elements) => {
         let horarioAtual = element.innerHTML.trim()
-        
+
         if (i < elements.length - 1) {
             let proximoHorario = elements[i + 1].innerHTML.trim(); // Pega o próximo horário
     
             // Agora você pode comparar `horaAtual` com `horarioAtual` e `proximoHorario`
-            if (horaAtual >= horarioAtual && horaAtual < proximoHorario) {
+            if (horaAtual >= horarioAtual && horaAtual <= proximoHorario) {
                 max[i].style.background= color;
                 console.log(i)
-                
-                if (i == 0) {
-                    document.getElementById("atAtual").textContent = "Começa mais tarde...";
-                } else {
-                    document.getElementById("atAtual").textContent = at[i].innerHTML;
-                }
-
-                if (i == 14) {
-                    document.getElementById("atProx").textContent = "Só amanhã...";
-                } else {
-                    document.getElementById("atProx").textContent = at[i+1].innerHTML;
-                }
+                console.log(tempNumber)
 
                 if (tempNumber != i ){
                     document.getElementById("tableSound").play();
@@ -53,6 +42,18 @@ function alterTable() {
             } else {
                 max[i].style.background= "";
             }
+        }          
+          
+        if (i == 0) {
+            document.getElementById("atAtual").textContent = "Começa mais tarde...";
+        } else {
+            document.getElementById("atAtual").textContent = at[i].innerHTML;
+        }
+
+        if (i == elements.length - 1) {
+            document.getElementById("atProx").textContent = "Só amanhã...";
+        } else {
+            document.getElementById("atProx").textContent = at[i+1].innerHTML;
         }
     })
 }
