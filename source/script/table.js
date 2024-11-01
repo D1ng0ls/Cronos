@@ -50,7 +50,7 @@ function alterTable() {
             document.getElementById("atAtual").textContent = at[i].innerHTML;
         }
 
-        if (i == elements.length - 1) {
+        if (i == elements.length) {
             document.getElementById("atProx").textContent = "Só amanhã...";
         } else {
             document.getElementById("atProx").textContent = at[i+1].innerHTML;
