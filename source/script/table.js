@@ -29,7 +29,7 @@ function alterTable() {
             let proximoHorario = elements[i + 1].innerHTML.trim(); // Pega o próximo horário
     
             // Agora você pode comparar `horaAtual` com `horarioAtual` e `proximoHorario`
-            if (horaAtual >= horarioAtual && horaAtual <= proximoHorario) {
+            if (horaAtual >= horarioAtual && horaAtual < proximoHorario) {
                 max[i].style.background= color;
                 console.log(i)
                 console.log(tempNumber)
@@ -43,7 +43,7 @@ function alterTable() {
                 max[i].style.background= "";
             }
         }          
-          
+
         if (i == 0) {
             document.getElementById("atAtual").textContent = "Começa mais tarde...";
         } else {
